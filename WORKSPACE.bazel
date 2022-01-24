@@ -24,6 +24,10 @@ load("@rules_rust//wasm_bindgen:repositories.bzl", "rust_wasm_bindgen_repositori
 
 rust_wasm_bindgen_repositories()
 
+load("@rules_rust//cxx:repositories.bzl", "rust_cxx_repositories")
+
+rust_cxx_repositories()
+
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 
 bazel_skylib_workspace()

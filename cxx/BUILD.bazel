@@ -1,0 +1,23 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//cxx:cxx.bzl", "rust_cxx_toolchain")
+
+package(default_visibility = ["//visibility:public"])
+
+toolchain_type(name = "cxx_toolchain")
+
+bzl_library(
+    name = "bzl_lib",
+    srcs = glob(["**/*.bzl"]) + ["//cxx/raze:crates.bzl"],
+    deps = ["//rust:bzl_lib"],
+)
+
+rust_cxx_toolchain(
+    name = "default_cxx_toolchain_impl",
+    cxxbridge = "//cxx/raze:cargo_bin_cxxbridge",
+)
+
+toolchain(
+    name = "default_cxx_toolchain",
+    toolchain = "default_cxx_toolchain_impl",
+    toolchain_type = "//cxx:cxx_toolchain",
+)

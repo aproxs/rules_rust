@@ -1,0 +1,6 @@
+load("@rules_rust//cxx:cxx.bzl", "rust_cxx_library")
+
+rust_cxx_library(
+    name = "cxx_test",
+    srcs = ["main.rs"],
+)

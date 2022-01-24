@@ -1,0 +1,26 @@
+[package]
+name = "fake_rules_rust_cxx_lib"
+version = "0.0.1"
+
+[lib]
+path = "fake_rules_rust_cxx_lib.rs"
+
+[dependencies]
+cxxbridge-cmd = "1.0.63"
+cxx = "1.0.63"
+
+[package.metadata.raze]
+genmode = "Remote"
+workspace_path = "//cxx/raze"
+gen_workspace_prefix = "rules_rust_cxx"
+rust_rules_workspace_name = "rules_rust"
+package_aliases_dir = "."
+default_gen_buildrs = false
+
+[package.metadata.raze.crates.cxxbridge-cmd.'1.0.63']
+gen_buildrs = true
+extra_aliased_targets = ["cargo_bin_cxxbridge"]
+
+[package.metadata.raze.crates.cxx.'1.0.63']
+gen_buildrs = true
+
